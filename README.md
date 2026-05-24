@@ -1,5 +1,8 @@
 # **Как работает Git**  
 ## *Базовые команды в консоли*  
+history - история запросов
+history > commands.log - сохранить историю в файл
+sudo 'название команды'   - открыть рут права для выполнения команды, к которой нет доступа, далее ввести пароль(не будет отображаться) - для mac
 ### Навигация  
 * pwd (от англ. print working directory, «показать рабочую папку») — покажи, в какой я папке;  
 * ls (от англ. list directory contents, «отобразить содержимое директории») — покажи файлы и папки в текущей папке;  
@@ -21,14 +24,42 @@
 * cp -r copy_from/ copy_to - скопировать директорию
 * cp brothers.html sisters.html - скопировать из и в текущую директорию и переименовали
 * cp ../Desktop/brothers.html sisters.html - скопировать из другой директории в текущую, переименовали
-* mv file.txt ~/my-dir (от англ. move, «переместить») — перемести файл или папку в другое место.  
+* mv file.txt ~/my-dir (от англ. move, «переместить») — перемести файл или папку в другое место.
+* mv config.py ~/ - перенесли config.py из текущей директории в домашнюю
+* mv config.py /Users/projects/app_name/ - перенесли config.py, указав путь к проекту
+* mv mv_from/* mv_to - перенесли все содержимое директории mv_from в директорию mv_to
+* mv my_app.ssh you_app.ssh - переименовали файл my_app.ssh в you_app.ssh
+* mv mv_from mv_from_new  - переименовали директорию mv_from в mv_from_new . Если директория mv_from_new уже существует, команда mv не переименует mv_from, а перенесёт её в mv_from_new.
+* mv card.js cards.js /Users/p0rt/Desktop/ - перенесли card.js на рабочий стол, переименовав в cards.js
+* mv *.txt ~/Users/Ya/Desktop - переместили файлы с расширением txt из текущей директории на Рабочий стол 
 
 #### Чтение  
-* cat file.txt (от англ. concatenate and print, «объединить и распечатать») — распечатай содержимое текстового файла file.txt.  
+* nano secrets.txt  - открыть файл в редакторе (сочетания клавиш для навигации Ctrl+G, закрыть редактор — Ctrl+X) 
+* cat file.txt (от англ. concatenate and print, «объединить и распечатать») — распечатай содержимое текстового файла file.txt.
+* cat a.txt > b.txt - скопировали  и перезаписали содержимое файла a.txt в b.txt
+* cat a.txt >> b.txt - скопировали содержимое a.txt в конец b.txt
+* grep [Ключ(и)] PATTERN [Адрес]  - поиск слов
+* grep DELETE ~/logs/log.txt - искать только в файле
+* grep -R DELETE ~/logs  - искать внутри каталога
+* grep -n DELETE log.txt  - отобразится номер строки
+* grep -B <кол-во строк> ...	Количество отображаемых строк до искомой
+* grep -A <кол-во строк>	... Количество отображаемых строк после искомой
+* grep -C <кол-во строк>	... Количество отображаемых строк до и после искомой одновременно
+* grep -c DELETE log.txt - вернёт количество строк, которые соответствуют условиям поиска
+* grep -i DEL* ~/logs/log.txt - ключ –i игнорирует регистр;символ астериск * - заменит любое количество любых символов
+* grep -i N[ua]m1 /test1/test2/test_Logs/Log1.txt - вариативное написание в квадратных скобках
+* grep "204 3.96" ~/logs/log.txt - "." — точка, заменяет один любой символ.
+* grep "^one" text.txt - команда выведет все строки, которые начинаются со слова one.
+* grep "one$" text.txt - шаблон встречается в конце строки
+* grep ERROR /test1/test2/test_Logs/Log1.txt > errors.txt - Все строки, в которых есть слово ERROR, сохранятся в файл errors.txt; содержимое файла errors.txt перезапишется.
 #### Удаление  
 * rm about.html (от англ. remove, «удалить») — удали файл about.html;  
 * rmdir images (от англ. remove directory, «удалить директорию») — удали папку images;  
-* rm -r second-project (от англ. remove, «удалить» + recursive, «рекурсивный») — удали папку second-project и всё, что она содержит.  
+* rm -r second-project (от англ. remove, «удалить» + recursive, «рекурсивный») — удали папку second-project и всё, что она содержит.
+
+* echo "Who's Stas Basov?" - вывели в окно терминала строку Who's Stas Basov?
+* echo "Who's Stas Basov?" > secrets.txt - создали текстовый файл secrets и записали в него строку "Who's Stas Basov?"
+* echo "Who's Stas Basov?" > ~./Users/Desktop/secrets.txt - указали файл secrets.txt и записали в него строку "Who's Stas Basov?" 
 
 #### Полезные возможности  
 Команды необязательно печатать и выполнять по очереди. Можно указать их списком — разделить двумя амперсандами (&&).  
